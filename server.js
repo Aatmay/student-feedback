@@ -14,12 +14,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB!"))
-  .catch((err) => console.log("❌ Connection error:", err));
+// ✅ Fix for Vercel serverless - connect before each request
+let isConnected = false;
 
-// ✅ Root route - serves the frontend
+async function connectDB() {
+  if (isConnected) return;
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+    });
+    isConnected = true;
+    console.log("✅ Connected to MongoDB!");
+  } catch (err) {
+    console.log("❌ Connection error:", err);
+    throw err;
+  }
+}
+
+// Middleware to ensure DB connection on every request
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).json({ message: "Database connection failed!" });
+  }
+});
+
+// Root route - serves the frontend
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
