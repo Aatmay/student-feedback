@@ -18,10 +18,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB!"))
   .catch((err) => console.log("❌ Connection error:", err));
 
-// =====================
-// ROUTES
-// =====================
-
 // POST - Submit feedback
 app.post("/feedback", async (req, res) => {
   try {
@@ -54,13 +50,9 @@ app.delete("/feedback/:id", async (req, res) => {
   }
 });
 
-// Start server
 const PORT = process.env.PORT || 3000;
-
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
 
 module.exports = app;

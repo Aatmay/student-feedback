@@ -6,176 +6,36 @@
   <title>Student Feedback System</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      padding: 30px 20px;
-    }
-
+    body { font-family: 'Poppins', sans-serif; min-height: 100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); padding: 30px 20px; }
     .container { max-width: 900px; margin: 0 auto; }
-
-    h1 {
-      text-align: center;
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, #e96c75, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .card h2 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #e96c75, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+    h1 { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 30px; background: linear-gradient(90deg, #e96c75, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 30px; margin-bottom: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; background: linear-gradient(90deg, #e96c75, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
-
-    label {
-      color: rgba(255,255,255,0.5);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    input, textarea, select {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 12px 15px;
-      color: #ffffff;
-      font-size: 14px;
-      font-family: 'Poppins', sans-serif;
-      outline: none;
-      transition: border 0.3s;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      border: 1px solid rgba(168,85,247,0.6);
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: rgba(255,255,255,0.2);
-    }
-
+    label { color: rgba(255,255,255,0.5); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+    input, textarea, select { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 15px; color: #ffffff; font-size: 14px; font-family: 'Poppins', sans-serif; outline: none; transition: border 0.3s; }
+    input:focus, textarea:focus, select:focus { border: 1px solid rgba(168,85,247,0.6); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
     select option { background: #302b63; }
-
-    .btn {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      cursor: pointer;
-      transition: opacity 0.3s, transform 0.2s;
-    }
-
+    .btn { padding: 12px 25px; border: none; border-radius: 12px; color: white; font-size: 14px; font-weight: 600; font-family: 'Poppins', sans-serif; cursor: pointer; transition: opacity 0.3s, transform 0.2s; }
     .btn:hover { opacity: 0.85; transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #e96c75, #a855f7);
-      margin-top: 15px;
-      width: 100%;
-    }
-
-    .btn-delete {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      padding: 8px 15px;
-      font-size: 12px;
-    }
-
-    .feedback-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .feedback-info h3 {
-      color: #ffffff;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .feedback-info p {
-      color: rgba(255,255,255,0.4);
-      font-size: 13px;
-    }
-
+    .btn-primary { background: linear-gradient(135deg, #e96c75, #a855f7); margin-top: 15px; width: 100%; }
+    .btn-delete { background: linear-gradient(135deg, #ef4444, #dc2626); padding: 8px 15px; font-size: 12px; }
+    .feedback-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .feedback-info h3 { color: #ffffff; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .feedback-info p { color: rgba(255,255,255,0.4); font-size: 13px; }
     .stars { color: #f59e0b; font-size: 16px; }
-
-    .success {
-      background: rgba(34,197,94,0.15);
-      border: 1px solid rgba(34,197,94,0.4);
-      color: #4ade80;
-      padding: 12px 16px;
-      border-radius: 10px;
-      margin-top: 15px;
-      font-size: 13px;
-      display: none;
-    }
-
-    .error {
-      background: rgba(239,68,68,0.15);
-      border: 1px solid rgba(239,68,68,0.4);
-      color: #f87171;
-      padding: 12px 16px;
-      border-radius: 10px;
-      margin-top: 15px;
-      font-size: 13px;
-      display: none;
-    }
-
-    .no-feedback {
-      text-align: center;
-      color: rgba(255,255,255,0.3);
-      font-size: 14px;
-      padding: 20px;
-    }
+    .success { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #4ade80; padding: 12px 16px; border-radius: 10px; margin-top: 15px; font-size: 13px; display: none; }
+    .error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; padding: 12px 16px; border-radius: 10px; margin-top: 15px; font-size: 13px; display: none; }
+    .no-feedback { text-align: center; color: rgba(255,255,255,0.3); font-size: 14px; padding: 20px; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>📝 Student Feedback System</h1>
-
-    <!-- Submit Feedback Form -->
     <div class="card">
       <h2>➕ Submit Feedback</h2>
       <div class="form-grid">
@@ -207,8 +67,6 @@
       <div class="success" id="submitSuccess"></div>
       <div class="error" id="submitError"></div>
     </div>
-
-    <!-- View All Feedback -->
     <div class="card">
       <h2>📋 All Feedback</h2>
       <div id="feedbackList"></div>
@@ -216,7 +74,7 @@
   </div>
 
   <script>
-    const API = "";
+    const API = "http://localhost:3000";
 
     window.onload = loadFeedback;
 
@@ -263,12 +121,10 @@
         const res = await fetch(`${API}/feedback`);
         const data = await res.json();
         const feedbackList = document.getElementById("feedbackList");
-
         if (data.feedbacks.length === 0) {
           feedbackList.innerHTML = '<p class="no-feedback">No feedback submitted yet!</p>';
           return;
         }
-
         feedbackList.innerHTML = data.feedbacks.map(fb => `
           <div class="feedback-card">
             <div class="feedback-info">
@@ -291,7 +147,6 @@
       if (!confirm("Are you sure you want to delete this feedback?")) return;
       try {
         const res = await fetch(`${API}/feedback/${id}`, { method: "DELETE" });
-        const data = await res.json();
         if (res.ok) loadFeedback();
       } catch (err) {
         console.error(err);
